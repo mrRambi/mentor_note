@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home/home_screen.dart';
+import 'remote_data/remote_data.dart';
 
 void main() {
+  NoteApi().fetchData();
   runApp(const MyApp());
 }
 
