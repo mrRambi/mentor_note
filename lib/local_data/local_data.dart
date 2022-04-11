@@ -13,7 +13,3 @@ class LocalDataService {
     return mySharedPreferences.getString(key);
   }
 }
-
-// final localData = LocalDataService(mySharedPreferences: await SharedPreferences.getInstance());
-// final data = 'random'
-// localData.writeData(key, data);

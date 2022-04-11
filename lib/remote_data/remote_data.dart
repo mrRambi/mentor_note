@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:http/http.dart' as http;
+import 'package:mentor_note/core/exceptions.dart';
 
 import 'model/note.dart';
 
@@ -13,21 +14,22 @@ class NoteApi {
     try {
       final response = await http
           .get(_baseUrl, headers: {"Content-Type": "aplication/json"});
-      if (response.statusCode != 200)
-        throw HttpException('${response.statusCode}');
+      if (response.statusCode != 200) {
+        throw MyHttpException(response.statusCode);
+      }
       final listOfJson = (jsonDecode(response.body) as List)
           .map((e) => Note.fromJson(jsonEncode(e)))
           .toList();
       return listOfJson;
-    } on HttpException catch (e) {
-      print("HttpException $e");
-      rethrow;
+    } on SocketException catch (e) {
+      throw MyException('No internet connection');
     } catch (e) {
-      print(e);
-      rethrow;
+      throw MyException('Unknown error');
     }
   }
 }
+
+
 
     // final listOfNotes =
     //     List<Note>.from(listOfJson.map((e) => Note.fromJson(e)));
