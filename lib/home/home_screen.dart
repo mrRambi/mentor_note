@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentor_note/fetching/ui/fetching_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -6,9 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('MAIN SCREEN'),
-      ),
+      body: FetchingScreen(),
     );
   }
 }

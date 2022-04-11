@@ -1,10 +1,10 @@
-class MyException {
+class MyException implements Exception {
   final String message;
 
   MyException(this.message);
 }
 
-class MyHttpException {
+class MyHttpException implements Exception {
   late String message;
   final int responseCode;
 
